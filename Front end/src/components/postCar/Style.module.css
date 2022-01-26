@@ -1,0 +1,215 @@
+.upBar {
+  display: flex;
+  background-color: var(--colorSecundario);
+  color: var(--colorLetraSecundario);
+  padding: 0.5rem 0.2rem;
+  align-items: center;
+}
+
+.upBar a {
+  color: var(--colorLetraSecundario);
+  margin: 0 15px;
+}
+
+.upBar h2{
+  font-weight: 600;
+}
+
+.formContainer {
+  background-color: var(--colorFondo);
+  padding: 3%;
+  padding-bottom: 5rem;
+
+}
+
+.formContainer h2 {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.generalInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.upBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.generalInfo .questionContainer {
+  flex-basis: 100%;
+}
+
+.questionContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1px 0 10px 0;
+}
+
+.questionContainer label {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.questionBox {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 5px 0px #00000026;
+  resize: none;
+  width: 95%;
+}
+
+.component {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  margin-bottom: 25px;
+  background-color: var(--colorFondo);
+  border-radius: 5px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.component label{
+  margin-right: 10px;
+}
+
+.characteristic input{
+  margin-right: 10px;
+}
+
+.add,
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 5px;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  font-size: 3em;
+}
+
+.add {
+  background-color: var(--colorPrincipal);
+}
+
+.delete {
+  background-color: var(--colorSecundario);
+}
+
+.characteristic {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  color: var(--colorSecundario);
+}
+
+.containerCharacteristics p{
+font-size: 14px;
+margin: 10px 0;
+color: var(--colorSecundario);
+}
+
+.containerImg p{
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.imageInput {
+  display: flex;
+  width: 100%;
+}
+
+.imageInput label {
+  width: 100%;
+}
+
+.imageInput label:hover {
+  cursor: pointer;
+}
+
+
+.policies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+.policy h4{
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.policy label {
+  font-size: 12px;
+  margin: 0.7em 0;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton{
+  background-color: var(--colorPrincipal);
+  color: white;
+  padding: 15px 140px;
+  border-radius: 8px;
+}
+
+
+@media screen and (min-width: 767px) {
+  .generalInfo .questionContainer {
+    flex-basis: 47%;
+  }
+  .formContainer h2{
+    font-size: 22px;
+  }
+  .questionContainer label{
+    font-size: 14px;
+  }
+  .generalInfo{
+
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .upBar {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .policy{
+    width: 32%;
+  }
+  
+}
+
+@media screen and (min-width: 1440px) {
+    .upBar {
+    padding: 0.5rem 2rem;
+  }
+}
+
+

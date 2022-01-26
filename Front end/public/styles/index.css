@@ -1,0 +1,92 @@
+@import url('variables.css');
+@import url('base.css');
+
+.buscador{
+    background-color: var(--colorSecundario);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.titulo{
+    color: var(--colorLetraSecundario);
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    padding: 25px 10px 20px 10px;
+}
+
+.inputs-buscador{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.ciudades{
+    width: 95%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+}
+
+.calendar{
+    width: 95%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 0 10px 10px;
+    margin-bottom: 8px;
+}
+
+.boton{
+    background-color: var(--colorPrincipal);
+    color: var(--colorLetraSecundario);
+    width: 95%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 0;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+@media screen and (min-width: 768px){
+    .inputs-buscador{
+        justify-content: space-evenly;
+        flex-direction: row;
+        padding-bottom: 20px;
+    }
+
+    .ciudades{
+        width: 34%;
+    }
+    
+    .calendar{
+        width: 34%;
+    }
+    
+    .boton{
+        width: 22%;
+    }
+   
+}
+
+@media screen and (min-width: 1366px){
+    .inputs-buscador{
+        justify-content:center;
+    }
+
+    .ciudades{
+        margin-right: 10px;
+        width: 30%;
+    }
+    
+    .calendar{
+        margin-right: 10px;
+        width: 30%;
+    }
+    
+    .boton{
+        width: 15%;
+    }
+   
+}

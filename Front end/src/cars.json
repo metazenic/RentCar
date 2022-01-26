@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1,
+    "img": "https://alravw.com/files/modelos/1580216627_surancabe.jpg",
+    "category": "FAMILIAR",
+    "title": "Volkswagen Suran",
+    "location":[
+      "Buenos Aires",
+      "https://www.google.com/maps/place/Plaza+Oeste+Shopping/@-34.6117484,-58.6016318,12.08z/data=!4m13!1m7!3m6!1s0x95bcca3b4ef90cbd:0xa0b3812e88e88e87!2sBuenos+Aires,+CABA,+Argentina!3b1!8m2!3d-34.6036844!4d-58.3815591!3m4!1s0x95bcb8bc768e1ea5:0x292c54382e196f96!8m2!3d-34.6339518!4d-58.6294858"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 2,
+    "img": "https://images.unsplash.com/photo-1551817280-6d59c77ce1b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1551&q=80",
+    "category": "TODO TERRENO",
+    "title": "Nissan Kicss",
+    "location": [
+      "Bogota",
+      "https://www.google.com/maps/place/Centro+Comercial+Tit%C3%A1n+Plaza/@4.68687,-74.1148081,13z/data=!4m13!1m7!3m6!1s0x8e3f9bfd2da6cb29:0x239d635520a33914!2zQm9nb3TDoQ!3b1!8m2!3d4.7109886!4d-74.072092!3m4!1s0x8e3f9b25144634c9:0xaa39a3ad6b78b4cb!8m2!3d4.694708!4d-74.086188"],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 3,
+    "img": "https://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=890&q=80",
+    "category": "LUJO",
+    "title": "BMW",
+    "location": [
+      "Cali",
+      "https://www.google.com/maps/place/Centro+Comercial+Palmetto+Plaza/@3.4105913,-76.5384126,15z/data=!4m13!1m7!3m6!1s0x8e30a6f0cc4bb3f1:0x1f0fb5e952ae6168!2sCali,+Valle+del+Cauca!3b1!8m2!3d3.4516467!4d-76.5319854!3m4!1s0x8e30a6af05707fc1:0xd083a753c7398fb8!8m2!3d3.4129044!4d-76.5408363"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 4,
+    "img": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
+    "category": "FAMILIAR",
+    "title": "Nissan Sentra",
+    "location": [ 
+      "Mendoza",
+      "https://www.google.com/maps/place/Plaza+Independencia/@-32.8979095,-68.8560624,14.08z/data=!4m13!1m7!3m6!1s0x967e093ec45179bf:0x205a78f6d20efa3a!2sMendoza,+Capital,+Mendoza,+Argentina!3b1!8m2!3d-32.8894587!4d-68.8458386!3m4!1s0x967e0907b3f6324b:0x501d1521958dfb21!8m2!3d-32.8895571!4d-68.8448326"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 5,
+    "img": "https://images.unsplash.com/photo-1603857804226-417cb45bd1a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1274&q=80",
+    "category": "TODO TERRENO",
+    "title": "Reanult Duster",
+     "location": [ 
+      "Mendoza",
+      "https://www.google.com/maps/place/Plaza+Independencia/@-32.8979095,-68.8560624,14.08z/data=!4m13!1m7!3m6!1s0x967e093ec45179bf:0x205a78f6d20efa3a!2sMendoza,+Capital,+Mendoza,+Argentina!3b1!8m2!3d-32.8894587!4d-68.8458386!3m4!1s0x967e0907b3f6324b:0x501d1521958dfb21!8m2!3d-32.8895571!4d-68.8448326"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 6,
+    "img": "https://images.unsplash.com/photo-1608640725309-08d36703674f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1032&q=80",
+    "category": "COMPACTO",
+    "title": "Renault Clio",
+    "location":[ 
+      "Medellin",
+      "https://www.google.com/maps/place/Plaza+Botero+-+Medell%C3%ADn,+Antioquia/@6.2512551,-75.5782844,15.79z/data=!4m13!1m7!3m6!1s0x8e4428dfb80fad05:0x42137cfcc7b53b56!2sMedell%C3%ADn,+Antioquia!3b1!8m2!3d6.2476376!4d-75.5658153!3m4!1s0x8e4428fecb4dff77:0x2e5a7e51ab929892!8m2!3d6.2524424!4d-75.5686415"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  },
+  {
+    "id": 7,
+    "img": "https://images.unsplash.com/photo-1578306349134-2823c41948e7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
+    "category": "COMPACTO",
+    "title": "Wolkswagen Golf",
+       "location":[
+      "Buenos Aires",
+      "https://www.google.com/maps/place/Plaza+Oeste+Shopping/@-34.6117484,-58.6016318,12.08z/data=!4m13!1m7!3m6!1s0x95bcca3b4ef90cbd:0xa0b3812e88e88e87!2sBuenos+Aires,+CABA,+Argentina!3b1!8m2!3d-34.6036844!4d-58.3815591!3m4!1s0x95bcb8bc768e1ea5:0x292c54382e196f96!8m2!3d-34.6339518!4d-58.6294858"
+    ],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian." 
+  },
+  {
+    "id": 8,
+    "img": "https://images.unsplash.com/photo-1616875491585-8e2464195d5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=580&q=80",
+    "category": "LUJO",
+    "title": "Mercedes",
+    "location": [
+      "Bogota",
+      "https://www.google.com/maps/place/Centro+Comercial+Tit%C3%A1n+Plaza/@4.68687,-74.1148081,13z/data=!4m13!1m7!3m6!1s0x8e3f9bfd2da6cb29:0x239d635520a33914!2zQm9nb3TDoQ!3b1!8m2!3d4.7109886!4d-74.072092!3m4!1s0x8e3f9b25144634c9:0xaa39a3ad6b78b4cb!8m2!3d4.694708!4d-74.086188"],
+    "description": "Norwegian forest kitty.Munchkin puma abyssinian , abyssinian . Bobcat ocicat or lion persian or bengal kitten. Bombay thai ocicat birman abyssinian."
+  }
+]

@@ -1,0 +1,36 @@
+ackage proyectoFinal.grupo2.model;
+
+import lombok.Data;
+import proyectoFinal.grupo2.persistence.Categoria;
+import proyectoFinal.grupo2.persistence.Ciudad;
+import proyectoFinal.grupo2.persistence.Imagen;
+import proyectoFinal.grupo2.persistence.Producto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+public class ProductoDto_prueba {
+    private Long id;
+    private String title;
+    private String description;
+    private String category;
+    private List<String> img;
+    private List<String> location;
+
+    public ProductoDto_prueba(){}
+
+    public ProductoDto_prueba(Producto p){
+        id = p.getId();
+        title = p.getNombre();
+        description = p.getDescripcion();
+        category = p.getCategoria().getTitulo();
+        img = new ArrayList<>();
+        for (Imagen i: p.getImagenes()) {
+            img.add(i.getUrl());
+        }
+        location = new ArrayList<>();
+        location.add(p.getCiudad().getNombre());
+        location.add(p.getCiudad().getPais());
+    }
+}

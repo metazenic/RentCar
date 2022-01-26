@@ -1,0 +1,28 @@
+.iconBar{
+    display: none;
+}
+
+@media screen and (min-width: 768px){
+    .iconBar{
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .iconBar i{
+        margin-right: 1rem;
+        color: var(--colorSecundario);
+        font-size: 20px;
+        transition: all 0.3s ease 0.08s;
+    }
+
+    .iconBar i:hover{
+        color: var(--colorHover)
+    }
+}
+@media screen and (min-width: 1366px){
+
+    .iconBar{
+        margin-left: 2rem;
+    }
+}

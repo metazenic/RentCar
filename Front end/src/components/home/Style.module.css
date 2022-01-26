@@ -1,0 +1,12 @@
+.cards {
+}
+
+.cards h2 {
+  color: var(--colorSecundario);
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 426px) {
+}

@@ -1,0 +1,42 @@
+.success{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 3rem 3rem;
+    border-radius: 20px;
+}
+
+.success i{
+    font-size: 40px;
+    color: var(--colorPrincipal);
+}
+
+.check{
+    margin-bottom: 10px;
+}
+
+.title{
+    color: var(--colorPrincipal);
+    margin: 10px;
+}
+
+.text{
+    margin: 15px 0;
+}
+
+.textProduct{
+    /* color: var(--colorSecundario); */
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.button{
+    background-color: var(--colorPrincipal);
+    border-radius: 5px;
+    border: none;
+    color: var(--colorLetraSecundario);
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 10px 90px;
+}
+

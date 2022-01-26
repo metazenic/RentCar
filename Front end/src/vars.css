@@ -1,0 +1,12 @@
+:root{
+    --colorPrincipal: #FBC02D;
+    --colorSecundario: #263238;
+    --colorTerciario:#607D8B;
+    --colorLetraSecundario:#FFFBE2;
+    --tipografia:'Poppins', sans-serif;
+    --colorFondo:rgba(196, 196, 196, 0.1);
+    --colorFondoSecundario: #FFFFFF;
+    --colorHover: #f0ad06;
+    --colorFondoWarningAlert: #fae0e0;
+    --colorLetraWarningAlert: #B00020;
+}

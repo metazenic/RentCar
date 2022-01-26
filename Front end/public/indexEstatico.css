@@ -1,0 +1,124 @@
+:root {
+  --principal: #1dbeb4;
+  --secundario: #383b58;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0%;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+}
+
+.logo h3 {
+  display: none;
+  padding-left: 10px;
+}
+
+.hamburger-menu {
+  font-size: 1.5em;
+}
+
+.user {
+  display: none;
+  align-items: center;
+  position: relative;
+}
+
+.user .icon-user {
+  border-radius: 50%;
+  background-color: var(--secundario);
+  color: white;
+  font-size: 1.5em;
+  padding: 0.3em;
+  margin: 5px;
+}
+
+.user .greetings-user {
+  color: gray;
+}
+
+.name-user {
+  color: var(--principal);
+}
+
+.user .close-user {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*hardcodeado para tener algo de relleno*/
+main {
+  border: black 5px solid;
+  font-size: 100px;
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--principal);
+  color: white;
+}
+
+.copyright p {
+  padding: 4px;
+}
+
+.social-media i {
+  display: none;
+  margin: 5px;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+
+  .user {
+    display: flex;
+  }
+
+  .social-media i {
+    display: initial;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .logo h3 {
+    display: initial;
+  }
+
+  header {
+    margin: 10px 40px;
+  }
+
+  footer {
+    padding: 10px 40px;
+  }
+}

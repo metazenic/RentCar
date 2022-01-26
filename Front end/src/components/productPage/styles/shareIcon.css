@@ -1,0 +1,31 @@
+.shareModal{
+    width: 300px;
+    text-align: center;
+    margin: 25px;
+}
+
+.shareText>p{
+    margin: 1rem 0 2rem;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--colorSecundario);
+}
+
+.shareText{
+    margin-top:3rem;
+}
+
+.shareModal .fa-bullhorn{
+    font-size: 45px;
+    margin: 0;
+    color: var(--colorPrincipal);
+}
+
+.shareIcon{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--colorPrincipal);
+    border:solid 2px var(--colorPrincipal);
+    padding-top: 8px;
+    border-radius: 7px;
+}

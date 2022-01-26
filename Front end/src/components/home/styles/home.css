@@ -1,0 +1,16 @@
+.main-cards {
+  margin: 15rem 0 3rem 0;
+}
+
+.main-cards h2 {
+  color: var(--colorSecundario);
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 426px) {
+    .main-cards {
+        margin: 21rem 0 3rem 0;
+      }
+}

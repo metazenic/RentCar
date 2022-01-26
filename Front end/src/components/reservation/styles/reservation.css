@@ -1,0 +1,47 @@
+.container_reservation {
+  background-color: var(--colorFondo);
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+.container_info_reservation {
+  margin: 0 1.5% 0 1.5%;
+}
+
+.container_calendar{
+  padding: 0px 10px 0px;
+}
+
+.policiesContainer{
+  padding-bottom: 40px;
+}
+
+@media screen and (min-width:768px){
+
+  } 
+
+@media screen and (min-width: 1368px) {
+  .container_info_reservation {
+    margin: 0 3% 0 3%;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .container_info_reservation {
+    margin: 0 3rem 0 0rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+
+  .container_reservation {
+    display: flex;
+    width: 100%;
+  } 
+  .container_info_reservation{
+    padding-top:15px;
+    width:60%
+  }
+  .container_reservation{
+    padding-left: 27px;
+  }
+}

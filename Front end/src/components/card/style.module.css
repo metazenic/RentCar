@@ -1,0 +1,191 @@
+.list {
+  border: 1px solid #dfe4ea;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px #00000040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  background-color: white;
+  transition: all 0.3s ease 0s;
+}
+
+
+.list:hover {
+  box-shadow: 2px 7px 7px #00000040;
+}
+
+/* esto no está en uso */
+.card-category:hover {
+  box-shadow: 0px 6px 6px #00000040;
+}
+
+.imgContainer {
+  border-radius: 10px;
+  height: 290px;
+  display: inline-block;
+  position: relative;
+}
+.heart {
+  position: absolute;
+  font-size: 30px;
+  color: var(--colorPrincipal);
+  left: 88%;
+  top: 10px;
+  text-shadow: -1px 0 var(--colorPrincipal), 0 1px var(--colorPrincipal),
+    1px 0 var(--colorPrincipal), 0 -1px var(--colorPrincipal);
+}
+.heart:hover {
+  color: var(--colorPrincipal);
+  text-shadow: -1px 0 var(--colorPrincipal), 0 1px var(--colorPrincipal),
+    1px 0 var(--colorPrincipal), 0 -1px var(--colorPrincipal);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+
+@supports (object-fit: fill) {
+  .img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+.content {
+  color: var(--colorSecundario);
+  padding: 10px;
+}
+
+.content h2,
+.content p {
+  padding: 10px 0;
+}
+.aboutMe {
+  padding: 0;
+  height: 82px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.locationName {
+  margin: 0 10px;
+}
+.features {
+  display: flex;
+  padding-top: 10px;
+}
+
+.info {
+  display: block;
+  width: 100%;
+  background: var(--colorPrincipal);
+  padding: 12px 0;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease 0s;
+}
+.info:hover {
+  background-color: var(--colorHover);
+}
+.punctuationCN {
+  display: flex;
+  justify-content: space-between;
+}
+.valorText {
+  margin-top: 0;
+  font-size: 12px;
+}
+.punctuation {
+  width: 40px;
+  font-size: 10px;
+  background-color: var(--colorSecundario);
+  color: var(--colorFondoSecundario);
+  height: 34px;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+  margin: 0 auto;
+}
+.mapMarker {
+  color: var(--colorSecundario);
+  font-size: 1.2em;
+}
+
+.showMap {
+  color: var(--colorPrincipal);
+  font-size: 12px;
+}
+
+@media screen and (min-width: 426px) {
+  .list {
+    flex-direction: row;
+  }
+  .imgContainer {
+    width: 50%;
+  }
+  .content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .img {
+    border-radius: 10px 0 0 10px;
+  }
+  .heart {
+    left: 86%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .list {
+    width: 49%;
+  }
+  .img {
+    border-radius: 10px 0 0 10px;
+  }
+  .content p {
+    font-size: 12px;
+  }
+  .content h2 {
+    font-size: 18px;
+  }
+  .content h3 {
+    font-size: 16px;
+  }
+  .heart {
+    left: 75%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .locationName {
+    font-size: 14px;
+  }
+  .showMap {
+    font-size: 12px;
+  }
+
+  .mapMarker {
+    font-size: 12px;
+  }
+
+  .content h2 {
+    font-size: 20px;
+  }
+  .heart {
+    left: 85%;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .content h2 {
+    font-size: 30px;
+  }
+}

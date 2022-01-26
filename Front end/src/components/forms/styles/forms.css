@@ -1,0 +1,174 @@
+section{
+    height: 86vh;
+    align-items: center;
+    background-color: var(--colorFondo);
+}
+
+.container{
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container h1{
+    color: var(--colorPrincipal);
+    width: 100%;
+    margin: 2%;
+}
+
+.container form {
+    width: 40%;
+    align-self: center;
+    justify-content: center;
+}
+
+.container form label{
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    margin-bottom: 8px;
+    color: var(--colorSecundario);
+}
+
+.container form input {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow:0.5px 2px 4px rgba(0, 0, 0, 0.12);
+    padding: 10px 0 10px 10px;
+    margin: 0.2rem 0  1rem;
+    transition: 0.04s;
+    border:none;
+}
+
+
+.containerForms{
+    text-align: left;
+}
+
+.invalid{
+    background-color: rgb(255, 0, 0, 0.04);
+    outline: 1px solid rgb(255, 0, 0);    
+}
+
+.container form p {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.container form input:hover{
+    box-shadow:0.5px 4px 6px rgba(0, 0, 0, 0.12);
+}
+
+.container form input:focus{
+    box-shadow:0.5px 2px 4px rgba(0, 0, 0, 0.12);
+    border: none;
+    outline: none;
+}
+
+.nameLastname{
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.nameLastname .name {
+    width: 47%;
+}
+
+.nameLastname .lastname {
+    width: 47%;
+}
+
+.buttonForms{
+    background-color: var(--colorPrincipal);
+    border: none;
+    border-radius: 5px;
+    color: var(--colorLetraSecundario);
+    box-shadow:1px 1px 5px #999;
+    padding: 10px 0;
+    font-size: 15px;
+    margin-top: 2rem;
+    width: 60%;
+}
+
+.linkForms {
+    text-align: center;
+    font-family: var(--tipografia);
+    font-weight: bold;
+    font-size: 12px;    
+    color: var(--colorSecundario);
+    margin: 2%;
+    width: 100%;
+}
+
+.linkForms a{
+    text-decoration: none;
+    color: var(--colorPrincipal);
+}
+
+
+@media screen and (max-width: 768px){
+    .container form {
+        width: 60%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .container h1{
+        margin: 1rem 0 1.6rem 0;
+    }
+
+    .nameLastname {
+        display: block;
+        width: 100%;
+    }
+
+    .nameLastname .name {
+        width: 100%;
+    }
+
+    .nameLastname .lastname {
+        display: block;
+        width: 100%;
+    }
+
+    .buttonForms{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .container{
+        justify-content: center;
+    }
+    
+    .container form {
+        width: 85%;
+    }
+
+    .container h1{
+        margin: 10% 0 10% 0;
+    }
+
+    .nameLastname .name {
+        width: 100%;
+    }
+
+    .nameLastname .lastname {
+        width: 100%;
+    }
+
+    .buttonForms{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/*-------------Invalid password-------------*/

@@ -1,0 +1,63 @@
+.activation > i{
+    font-size: 50px;
+    margin-bottom: 1.5rem;
+    color:var(--colorPrincipal);
+}
+
+.keypadButton>button{
+    display: block;
+background-color: var(--colorPrincipal);
+font-size: 15px;
+font-weight: 600;
+width: 200px;
+padding: 12px 0;
+margin-top: 2rem ;
+margin-bottom: 1rem;
+margin-left: calc(50% - 100px);
+border-radius: 5px;
+box-shadow:0.5px 2px 4px rgba(0, 0, 0, 0.12)
+}
+
+.keypadButton>button>a{
+    color: white;
+}
+
+
+.keypadButton>a{
+display: block;
+font-size: 15px;
+text-decoration: underline;
+color: var(--colorPrincipal);
+}
+
+.contenedor_activation{
+    display: flex;
+    width: 100%;
+    height: 85.7vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.activation{
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 7rem;
+}
+
+@media screen and (min-width: 768px) {  
+.activation{
+    background-color: white;
+    width: 60%;
+    padding: 5rem;
+    border-radius: 10px;
+    box-shadow:5px 5px 8px rgba(0, 0, 0, 0.12)
+}
+}
+
+@media screen and (min-width: 1440px) {
+    .activation{
+        background-color: white;
+        width: 50%;
+    }
+}

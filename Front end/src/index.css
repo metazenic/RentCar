@@ -1,0 +1,38 @@
+@import url("./vars.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  border: none;
+  outline: none;
+}
+
+main {
+  background-color: var(--colorFondo);
+  align-items: center;
+}
+
+button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+@media screen and (min-width: 768px) {
+  /* contenido movido a módulos */
+}
+
+@media screen and (min-width: 1366px) {
+  main {
+    min-height: calc(100vh - 150px);
+  }
+}

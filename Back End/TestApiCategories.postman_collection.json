@@ -1,0 +1,750 @@
+{
+	"info": {
+		"_postman_id": "53c1454c-2bbe-4555-a987-0f3c5e7bb5da",
+		"name": "TestApiCategories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "ListarCategorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista vacía cuando se corre el servidor\",function(){\r",
+									"    pm.expect(pm.response.json()[0]).to.equal();\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Lista vacía cuando se corre el servidor\",function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"Categoria1\")\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"titulo\":\"Categoria1\",\r\n    \"descripcion\":\"descripcion Categoria1\",\r\n    \"url\":\"https://fierrosclasicos.com/wp-content/uploads/2014/07/port2-450x322.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCategorias2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verificar la categoría guardada\", function(){\r",
+									"    pm.expect(pm.response.json()[0].titulo).equal(\"Categoria1\");\r",
+									"    pm.expect(pm.response.json()[0].descripcion).equal(\"descripcion Categoria1\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategorias2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":2,\r\n    \"titulo\":\"Categoria2\",\r\n    \"descripcion\":\"descripcion Categoria2\",\r\n    \"url\":\"https://rentingcoches.com/blog-media/2020/10/COCHES-SEGMENTOS.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarCategoriaByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"Categoria2\");\r",
+									"    pm.expect(pm.response.json().url).equal(\"https://rentingcoches.com/blog-media/2020/10/COCHES-SEGMENTOS.jpg\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/buscar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"buscar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarCategoriaByIDNoExiste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/buscar/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"buscar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Actualizado correctamente\", function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"nuevo titulo categoria1\");\r",
+									"    pm.expect(pm.response.json().descripcion).equal(\"nueva descripcion1\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"descripcion\":\"nueva descripcion1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarNoExiste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":3,\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"descripcion\":\"nueva descripcion1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarIdNoEspecificado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"Error: para actualizar una categoria, el id tiene que estar presente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCategorias3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Listar todas las categorias\", function(){\r",
+									"    pm.expect(pm.response.json().length).equal(2);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategoriaSinId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Guardar una categoría sin especificar el Id\",function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"CategoriaSinId\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"CategoriaSinId\",\r\n    \"descripcion\":\"descripcion Categoria Sin id\",\r\n    \"url\":\"https://rentingcoches.com/blog-media/2020/10/COCHES-SEGMENTOS.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCategoriaPorId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"La categoria ha sido eliminada\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/eliminar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCategoriaIdNoExiste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/eliminar/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"eliminar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "ListarProductosDeLaBase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCarroPrueba",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Carro Test\",\r\n    \"descripcion\": \"test\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"imagenes\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ],\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductosCarro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCategoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCategoria/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCategoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCiudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCiudad/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCiudad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCarroPrueba",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":9,\r\n    \"nombre\": \"Carro Test modified\",\r\n    \"descripcion\": \"test modified\",\r\n    \"categoria\": {\r\n        \"id\": 2\r\n    },\r\n    \"imagenes\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ],\r\n    \"ciudad\": {\r\n        \"id\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCiudad2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCiudad/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCiudad",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarTest",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/eliminar/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"eliminar",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

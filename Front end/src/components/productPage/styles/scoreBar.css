@@ -1,0 +1,68 @@
+.scoreBar{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--colorTerciario);
+    justify-content: space-between;
+}
+
+.scoreBar__information{
+    display: flex;
+}
+
+.scoreBar__information i{
+    margin-right: 8px;
+}
+
+
+.scoreBar__information p{
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: 9rem;
+}
+
+.scoreBar__score{
+    display: flex;
+}
+
+.scoreBar__score>p{
+    background-color: var(--colorSecundario);
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin-left: 10px;
+    color: var(--colorFondoSecundario);
+}
+
+.scoreBar__stars{
+    text-align: center;
+}
+
+.scoreBar__stars i{
+    color: var(--colorPrincipal);
+    font-size: 0.8rem;
+    margin-right: 2px;
+    align-self: center;    
+}
+
+.scoreBar__stars p{
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+@media screen and (min-width: 1440px){
+    .scoreBar{
+        padding: 0.4rem 2.7rem;
+    }
+
+    .scoreBar__information p{
+        font-size: 0.8rem;
+        font-weight: 600;
+        width: 20rem;
+    }
+
+    .scoreBar__stars p{
+        margin-bottom: 4px;
+    }
+}

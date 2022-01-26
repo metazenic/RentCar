@@ -1,0 +1,2890 @@
+{
+	"info": {
+		"_postman_id": "24503b9a-44b3-4434-9e5a-9def5e9fd84b",
+		"name": "TestApiCategories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "ListarCategorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.expect(pm.response.json()[1]).to.not.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Se tuve que crear un id nuevo\",function(){\r",
+									"    pm.expect(pm.response.json().id).not.null\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"Categoria1\",\r\n    \"descripcion\":\"descripcion Categoria1\",\r\n    \"url\":\"https://fierrosclasicos.com/wp-content/uploads/2014/07/port2-450x322.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategorias sin jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"titulo\":\"Categoria1\",\r\n    \"descripcion\":\"descripcion Categoria1\",\r\n    \"url\":\"https://fierrosclasicos.com/wp-content/uploads/2014/07/port2-450x322.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCategorias2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verificar la categoría guardada\", function(){\r",
+									"    pm.expect(pm.response.json()[pm.response.json().length-1].titulo).equal(\"Categoria1\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarCategoriaByID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().titulo.length).greaterThan(0);\r",
+									"    \r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/buscar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"buscar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarCategoriaByIDNoExiste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/buscar/100000",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"buscar",
+								"100000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"descripcion\":\"nueva descripcion1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Actualizado correctamente\", function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"nuevo titulo categoria1\");\r",
+									"    pm.expect(pm.response.json().descripcion).equal(\"nueva descripcion1\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"descripcion\":\"nueva descripcion1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarNoExiste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1000000,\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"descripcion\":\"nueva descripcion1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarIdNoEspecificado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"Error: para actualizar una categoria, el id tiene que estar presente\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"nuevo titulo categoria1\",\r\n    \"url\":\"sin url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCategorias3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categorias/lista",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GuardarCategoriaSinId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Guardar una categoría sin especificar el Id\",function(){\r",
+									"    pm.expect(pm.response.json().titulo).equal(\"CategoriaSinId\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"CategoriaSinId\",\r\n    \"descripcion\":\"descripcion Categoria Sin id\",\r\n    \"url\":\"https://rentingcoches.com/blog-media/2020/10/COCHES-SEGMENTOS.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/guardar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCategoriaPorId sin jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/eliminar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"eliminar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCategoriaPorId con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"La categoria ha sido eliminada\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/eliminar/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"eliminar",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCategoriaIdNoExiste Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categorias/eliminar/1000",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categorias",
+								"eliminar",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "ListarProductosDeLaBase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.expect(pm.response.json()[1]).to.not.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCarroPrueba sin jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2Mzg5MjYwOTQsImlhdCI6MTYzODg5MDA5NH0.dE5T65VXz18is22Yv8eDiSMoSGr6UHfApwZI-R8bu2w",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Carro Test\",\r\n    \"descripcion\": \"test\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"imagenes\": [\r\n        {\r\n            \"url\":\"jjjd\"\r\n        }\r\n    ],\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    },\r\n    \"caracteristicas\":[{\r\n        \"id\":1\r\n    },\r\n    {\r\n        \"id\":2\r\n    }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCarroPrueba con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Se tuve que crear un id nuevo\",function(){\r",
+									"    pm.expect(pm.response.json().id).not.null\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Carro Test\",\r\n    \"descripcion\": \"test\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"imagenes\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ],\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCarroPrueba con jwt incorrecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.be.error;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Carro Test\",\r\n    \"descripcion\": \"test\",\r\n    \"categoria\": {\r\n        \"id\": 1\r\n    },\r\n    \"imagenes\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ],\r\n    \"ciudad\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"guardar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCategoria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.expect(pm.response.json()[0]).to.not.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCategoria/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCategoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCategoria inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.response.to.have.body(\"La categoria no existe o no está asignada a ningún producto\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCategoria/1000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCategoria",
+								"1000000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCiudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.expect(pm.response.json()[0]).to.not.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCiudad/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCiudad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarProdPorCiudad inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.response.to.have.body(\"La ciudad no existe o no está asignada a ningún producto\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/listarPorCiudad/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"listarPorCiudad",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar producto sin jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\": \"prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar producto con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"     pm.expect(pm.response.json().nombre).to.equal(\"prueba\")\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"nombre\": \"prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporciudadyfecha_ningunodisponible",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se tuve que crear un id nuevo\",function(){\r",
+									"    pm.expect(pm.response.json().length).to.greaterThan(0)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ciudad\": \"Bogota\",\r\n    \"fechaInicial\": \"2021-12-09T00:45:42.01Z\",\r\n    \"fechaFinal\": \"2021-12-19T00:45:42.01Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "ciudad",
+									"value": "Mendoza",
+									"disabled": true
+								},
+								{
+									"key": "fechainicial",
+									"value": "2021-11-19T19:02:32.953+00:00",
+									"disabled": true
+								},
+								{
+									"key": "fechafinal",
+									"value": "2021-11-19T19:02:32.953+00:00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarTest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarTest con jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.response.to.have.body(\"El producto ha sido eliminado\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/eliminar/37",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"eliminar",
+								"37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EliminarTest con id inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTIwMDIsImlhdCI6MTYzODk3NjAwMn0.vS8OCOLGAuWYxvYkrRVDsnJmWlIqiia5u4osD1w6fdw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/Producto/eliminar/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"eliminar",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().id).not.null;\r",
+									"    \r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar por id incorrecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Lista tiene que tener instancias\",function(){\r",
+									"    pm.response.to.have.body(\"El id no existe.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporfechayciudad_disponible",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ciudad\": \"Bogota\",\r\n    \"fechaInicial\": \"2022-11-30T21:00:00\",\r\n    \"fechaFinal\": \"2023-12-10T21:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporfechayciudad_disponible solo por fechas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.equal(0);\r",
+									"})\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\": \"2020-11-30T21:00:00\",\r\n    \"fechaFinal\": \"2023-12-10T21:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporfechayciudad_disponible solo por fechas disponibles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna productos\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\": \"2023-11-30T21:00:00\",\r\n    \"fechaFinal\": \"2023-12-10T21:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/Producto/buscar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"buscar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fechasNoDisponibles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna fechas\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/nodisponible/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"nodisponible",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fechasNoDisponibles Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna vacio\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/nodisponible/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"nodisponible",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fechasNoDisponibles producto que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna vacio\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/Producto/nodisponible/50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"Producto",
+								"nodisponible",
+								"50"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Log in",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Retorna jwt\", function(){\r",
+									"    pm.expect(pm.response.json().jwt).to.not.null;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"edad\": 8,\r\n    \"password\": \"1234567\",\r\n    \"email\": \"carlos3@gmail.com\",\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Tomate\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"edad\": 8,\r\n    \"password\": \"b\",\r\n    \"email\": \"gdgg@gmail.com\",\r\n    \"nombre\": \"asdasd\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar jwt\", function(){\r",
+									"    pm.expect(pm.response.json().jwt).to.not.null;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM4NjY1ODc3LCJpYXQiOjE2Mzg2Mjk4Nzd9.ShXtlBITsM21v6z04GeY2LnIWhG1DoTrTwbNl99q_oo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"nicolastanco001@gmail.com\",\r\n    \"password\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log in incorrect password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto en el body\",function(){\r",
+									"    pm.response.to.have.body(\"Email o contraseña incorrecta\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM4NjY1ODc3LCJpYXQiOjE2Mzg2Mjk4Nzd9.ShXtlBITsM21v6z04GeY2LnIWhG1DoTrTwbNl99q_oo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"nicolastanco001@gmail.com\",\r\n    \"password\": \"123467\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resgister_existing_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto en el body\",function(){\r",
+									"    pm.response.to.have.body(\"El usuario ya existe\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"edad\": 8,\r\n    \"password\": \"b\",\r\n    \"email\": \"nicolastanco001@gmail.com\",\r\n    \"nombre\": \"asdasd\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log in incorrect mail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"glgg\",\r\n    \"password\": \"bj\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "log in admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar jwt\", function(){\r",
+									"    pm.expect(pm.response.json().jwt).to.not.null;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activar cuenta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto en el body\",function(){\r",
+									"    pm.response.to.have.body(\"La cuenta ha sido activada.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/activation?email=carlos2@gmail.com&activationCode=4CMDI8DoZXl55vxe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"activation"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "carlos2@gmail.com"
+								},
+								{
+									"key": "activationCode",
+									"value": "4CMDI8DoZXl55vxe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activar cuenta activation code erroneo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto en el body\",function(){\r",
+									"    pm.response.to.have.body(\"El codigo es incorrecto.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/activation?email=ggg@gmail.com&activationCode=5mrL3LDEIDTI5j",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"activation"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ggg@gmail.com"
+								},
+								{
+									"key": "activationCode",
+									"value": "5mrL3LDEIDTI5j"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activar cuenta email erroneo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto en el body\",function(){\r",
+									"    pm.response.to.have.body(\"El email es incorrecto.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/activation?email=nicolastanco@gmail.com&activationCode=5mrL3LDEIDTI5jX1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"activation"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nicolastanco@gmail.com"
+								},
+								{
+									"key": "activationCode",
+									"value": "5mrL3LDEIDTI5jX1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservas",
+			"item": [
+				{
+					"name": "crear sin jwt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM4NjY1ODc3LCJpYXQiOjE2Mzg2Mjk4Nzd9.ShXtlBITsM21v6z04GeY2LnIWhG1DoTrTwbNl99q_oo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2021-12-30\",\r\n    \"fechaFinal\": \"2022-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":17\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear jwt incorrecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM4NjY1ODc3LCJpYXQiOjE2Mzg2Mjk4Nzd9.ShXtlBITsM21v6z04GeY2LnIWhG1DoTrTwbNl99q_oo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2021-12-30\",\r\n    \"fechaFinal\": \"2022-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":16\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Crea reserva y trae id\",function(){\r",
+									"    pm.expect(pm.response.json().id).not.null\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM5MDE0Mzc1LCJpYXQiOjE2Mzg5NzgzNzV9.PppOPwIHWwBmIeMxJ_LnY6M_b95iwVyfrt5OYx6azv4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2030-12-30\",\r\n    \"fechaFinal\": \"2030-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":20\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear fecha ocupada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuaWNvbGFzdGFuY28wMDFAZ21haWwuY29tIiwiZXhwIjoxNjM4NjY1ODc3LCJpYXQiOjE2Mzg2Mjk4Nzd9.ShXtlBITsM21v6z04GeY2LnIWhG1DoTrTwbNl99q_oo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2021-12-30\",\r\n    \"fechaFinal\": \"2022-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":16\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear siendo admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2MzkwMTQ4MTYsImlhdCI6MTYzODk3ODgxNn0.RHIxY3fYbZirv9k_6FejvmXK-6AyIWrqUM5jSrtzXUc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2021-12-30\",\r\n    \"fechaFinal\": \"2022-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"admin@admin.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":2\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear con cuenta inactiva",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Texto del body\",function(){\r",
+									"    pm.response.to.have.body(\"La cuenta del usuario no esta activa.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZ2dAZ21haWwuY29tIiwiZXhwIjoxNjM5MDE0OTQ3LCJpYXQiOjE2Mzg5Nzg5NDd9.StLp0UV069azEyBGFcvDC1tXfhXTZnAtOH-7P-OjRgc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"fechaInicial\":\"2021-12-30\",\r\n    \"fechaFinal\": \"2022-01-05\",\r\n    \"startHour\": \"4:00 pm\",\r\n    \"usuario\":{\r\n        \"email\":\"ggg@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":4\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/reservas/crear",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna rservas\", function(){\r",
+									"    pm.expect(pm.response.json().id).not.null;\r",
+									"    \r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/reservas/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarporid id inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/reservas/9999",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "por email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar reservas\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/reservas/?email=nicolastanco001@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nicolastanco001@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "por email sin reservas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna vacio\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/reservas/?email=ggg@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ggg@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "por email erroneo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/reservas/?email=gg@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"reservas",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "gg@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favoritos",
+			"item": [
+				{
+					"name": "crear favorito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Retorna texto\",function(){\r",
+									"    pm.response.to.have.body(\"La cuenta del usuario no esta activa.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":31\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/favoritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"favoritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar favorito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Retorna texto\",function(){\r",
+									"    pm.response.to.have.body(\"Se elimino el favorito\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":{\r\n        \"email\":\"nicolastanco001@gmail.com\"\r\n    },\r\n    \"producto\":{\r\n        \"id\":31\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/favoritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"favoritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get favoritos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna favoritos\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/favoritos/?email=nicolastanco001@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"favoritos",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nicolastanco001@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get favoritos sin favoritos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna array vacio\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/favoritos/?email=admin@admin.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"favoritos",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@admin.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "user id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.response.to.have.body(\"2\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/admin@admin.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"admin@admin.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user id incorrect",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/admin@admin.cm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"admin@admin.cm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "caracteristicas",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retornar el registro con Id 2\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/caracteristicas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"caracteristicas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ciudades",
+			"item": [
+				{
+					"name": "buscar ciudades",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Retorna ciudades\", function(){\r",
+									"    pm.expect(pm.response.json().length).to.not.equal(0);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/ciudades/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ciudades",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

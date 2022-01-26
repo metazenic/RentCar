@@ -1,0 +1,174 @@
+.container {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+}
+
+.top {
+  width: 100%;
+  background-color: #ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h3 {
+  display: none;
+  padding-left: 10px;
+  font-family: var(--tipografia);
+  font-weight: lighter;
+  font-style: italic;
+  padding-top: 1rem;
+}
+
+.hamburgerMenu {
+  font-size: 1.5em;
+}
+
+.user {
+  display: none;
+  align-items: center;
+  position: relative;
+}
+
+.userDropDown {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.user .iconUser {
+  display: flex;
+  border-radius: 50%;
+  background-color: var(--colorSecundario);
+  color: white;
+  font-size: 1.5em;
+  margin-right: 5px;
+  height: 2em;
+  width: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDropDown .iconUser {
+  display: flex;
+  border-radius: 50%;
+  background-color: var(--colorSecundario);
+  color: white;
+  font-size: 1.3em;
+  height: 2em;
+  width: 2em;
+  align-items: center;
+}
+
+.userDropDown .alignIcon {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.user .greetingsUser,
+.userDropDown .greetingsUser {
+  color: gray;
+}
+
+.dropDownGreetingUser {
+  color: var(--principal);
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+
+.dropDownNameUser {
+  color: var(--principal);
+  text-align: right;
+}
+
+.nameUser {
+  color: var(--principal);
+}
+
+.user .closeUser {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.userDropDown .closeUser {
+  display: none;
+}
+
+.keypad {
+  display: none;
+}
+
+.button {
+  background-color: var(--colorLetraSecundario);
+  color: var(--colorPrincipal);
+  width: 200px;
+  border-radius: 5px;
+  border: 2px solid var(--colorPrincipal);
+  padding: 10px 0;
+  margin: 8px 0 10px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+  display: none;
+}
+
+.button:hover {
+  background-color: var(--colorPrincipal);
+  color: var(--colorLetraSecundario);
+}
+
+.logo img {
+  width: 4.1rem;
+}
+
+@media screen and (min-width: 426px) {
+  .hamburgerMenu {
+    display: none;
+  }
+
+  .button {
+    display: block;
+  }
+
+  .user {
+    display: flex;
+  }
+
+  .keypad {
+    display: flex;
+  }
+}
+
+.drop_down_closed {
+  display: none;
+}
+
+.drop_down {
+  display: initial;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 1366px) {
+  .logo h3 {
+    display: initial;
+  }
+
+  .top {
+    padding: 10px 40px;
+  }
+}

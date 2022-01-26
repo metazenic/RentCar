@@ -1,0 +1,52 @@
+.description{
+    margin: 0 1rem  1rem 1rem;
+    color: var(--colorSecundario);
+}
+
+.description h3{
+    font-size: 15px;
+}
+
+.description h4{
+    margin-top: 0.5rem;
+    font-size: 12px;
+}
+
+.description p{
+    font-size: 12px;
+}
+
+@media screen and (min-width: 768px){
+    .description{
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+    .description h3{
+        font-size: 22px;
+        margin-top: 2rem;
+    }
+
+    .description h4{
+        font-size: 15px;
+        margin-bottom: 0.3rem;
+        margin-top: 1rem;
+    }
+    
+    .description p{
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 1366px){
+    .description{
+        margin: 1rem 2rem;
+    }
+
+    .description__block{
+        margin-top: 2.5rem;
+    }
+
+    .description h3{
+        font-size: 22px;
+    }
+}

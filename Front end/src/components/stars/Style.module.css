@@ -1,0 +1,6 @@
+.star {
+  color: var(--colorPrincipal);
+  font-size: 0.8rem;
+  margin-right: 2px;
+  align-self: center;
+}
